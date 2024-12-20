@@ -1,11 +1,16 @@
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
 
+const App: React.FC = () => {
   return (
-    <>
-    <h1>Welcome to Sequence Finance Dashboard</h1>
-    </>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes>
+  </Router>
   )
 }
 
