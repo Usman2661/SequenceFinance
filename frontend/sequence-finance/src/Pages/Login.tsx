@@ -8,7 +8,12 @@ const Login: React.FC = () => {
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container direction={"row"} spacing={2} size={12}>
-          <Grid size={{ xs: 12, md: 6 }}> I am for image</Grid>
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            I am for image
+          </Grid>
           <Grid
             size={{ xs: 12, md: 6 }}
             sx={{
