@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box, Container } from "@mui/material";
+import { PersonOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
@@ -22,7 +23,13 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container
+      maxWidth={false} // Removes the max-width constraint
+      sx={{
+        width: "70%",
+        padding: 3,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -34,62 +41,76 @@ const LoginForm: React.FC = () => {
           boxShadow: 3,
         }}
       >
-        <Typography variant="h5" gutterBottom>
-          Welcome Back
+        <PersonOutline
+          sx={{
+            fontSize: 64,
+            color: "black",
+            marginTop: 16,
+            marginBottom: 2,
+          }}
+        />
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: 550 }}>
+          Welcome Back !
         </Typography>
-        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-          {/* Email Field */}
-          <TextField
-            label="Email"
-            type="email"
-            fullWidth
-            required
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <Typography variant="body2" color="textSecondary">
+          Please enter your details
+        </Typography>
+        <Box sx={{ width: "90%" }}>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            {/* Email Field */}
+            <TextField
+              label="Email"
+              type="email"
+              fullWidth
+              required
+              margin="normal"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-          {/* Password Field */}
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            required
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            {/* Password Field */}
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              required
+              margin="normal"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          {/* Error Message */}
-          {error && <Typography color="error">{error}</Typography>}
+            {error && <Typography color="error">{error}</Typography>}
 
-          {/* Login Button */}
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{
-              marginTop: "10px",
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "50px",
-              padding: "10px 20px",
-              "&:hover": {
-                backgroundColor: "darkgray",
-              },
-            }}
-          >
-            Login
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{
+                marginTop: "10px",
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: "50px",
+                padding: "10px 20px",
+                "&:hover": {
+                  backgroundColor: "darkgray",
+                },
+              }}
+            >
+              Login
+            </Button>
+          </form>
+        </Box>
 
-        {/* Forgot Password Link */}
-        <Box sx={{ marginTop: 2 }}>
-          <Typography variant="body2" color="textSecondary" align="center">
-            <p>
-              Don't have an account? <Link to="/signup">Sign up here</Link>
-            </p>
+        <Box sx={{ marginTop: 2, marginBottom: 17 }}>
+          <Typography variant="body2" color="textSecondary">
+            Don't have an account?{" "}
+            <Link
+              to="/signup"
+              style={{ color: "blue", textDecoration: "none" }}
+            >
+              Sign up here
+            </Link>
           </Typography>
         </Box>
       </Box>
