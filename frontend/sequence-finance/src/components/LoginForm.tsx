@@ -30,7 +30,6 @@ const LoginForm: React.FC = () => {
         alignItems: "center",
         backgroundColor: "#fff",
         borderRadius: 2,
-        boxShadow: 1,
         height: "100%",
       }}
     >
@@ -48,7 +47,7 @@ const LoginForm: React.FC = () => {
       <Typography variant="body2" color="textSecondary">
         Please enter your details
       </Typography>
-      <Box sx={{ width: "90%" }}>
+      <Box sx={{ width: "70%" }}>
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           {/* Email Field */}
           <TextField
