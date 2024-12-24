@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import LoginForm from "../components/LoginForm";
 import { Card, CssBaseline, Typography } from "@mui/material";
+import SignUpForm from "../components/SignUpForm";
 
 const Login: React.FC = () => {
+  const [isLogin, setLogin] = useState<boolean>(true);
+
+  const toggleLoginState = () => {
+    setLogin((prevState) => !prevState); // Toggle between true and false
+  };
   return (
     <Grid
       container
@@ -76,7 +82,11 @@ const Login: React.FC = () => {
         </Card>
       </Grid>
       <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
-        <LoginForm />
+        {isLogin ? (
+          <LoginForm toggleLoginState={toggleLoginState} />
+        ) : (
+          <SignUpForm toggleLoginState={toggleLoginState} />
+        )}
       </Grid>
     </Grid>
   );
