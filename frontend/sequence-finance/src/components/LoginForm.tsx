@@ -28,7 +28,6 @@ const LoginForm: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "#fff",
         borderRadius: 2,
         height: "100%",
       }}
