@@ -62,13 +62,13 @@ const Login: React.FC = () => {
               fontWeight: 800,
               fontFamily: "monospace",
               position: "absolute",
-              top: "20px", // Position the text at the top of the image
-              left: "20px", // Position the text at the right side of the image
-              color: "black", // White color for the caption text
-              padding: "10px", // Add some padding around the text
-              borderRadius: "8px", // Optional: rounds the background corners
-              textAlign: "right", // Ensure the text is aligned to the right
-              maxWidth: "50%", // Limit the width of the text to avoid overflow
+              top: "20px",
+              left: "20px",
+              color: "black",
+              padding: "10px",
+              borderRadius: "8px",
+              textAlign: "right",
+              maxWidth: "50%",
             }}
           >
             SEQFinance
