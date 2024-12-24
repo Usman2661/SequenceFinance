@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { PersonOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { loginTextStyle } from "../constants/text";
+import { loginInputStyle } from "../constants/inputs";
 
 const LoginForm: React.FC = () => {
   // State to manage form inputs
@@ -20,33 +22,6 @@ const LoginForm: React.FC = () => {
       // Handle login logic here
       console.log("Email:", email, "Password:", password);
     }
-  };
-
-  // Reusable styles for common elements
-  const textStyle = {
-    color: "white",
-    fontWeight: "550",
-  };
-
-  const inputStyle = {
-    color: "white", // Default text color
-    "& .MuiInputLabel-root": {
-      color: "white", // Label color
-    },
-    "& .MuiOutlinedInput-root": {
-      color: "white", // Default text color inside the input
-      backgroundColor: "#2c3e50", // Change the background color inside the input field
-      "& fieldset": {
-        borderColor: "#134b4e", // Default border color (when not focused)
-      },
-      // Change outline color on focus or click
-      "&.Mui-focused fieldset": {
-        borderColor: "#134b4e", // Border color when focused or clicked
-      },
-      "&:hover fieldset": {
-        borderColor: "#134b4e", // Border color when hovered
-      },
-    },
   };
 
   return (
@@ -70,10 +45,10 @@ const LoginForm: React.FC = () => {
           marginBottom: 2,
         }}
       />
-      <Typography variant="h4" sx={textStyle}>
+      <Typography variant="h4" sx={loginTextStyle}>
         Welcome Back!
       </Typography>
-      <Typography variant="body2" sx={{ ...textStyle, fontSize: "14px" }}>
+      <Typography variant="body2" sx={{ ...loginTextStyle, fontSize: "14px" }}>
         Please enter your details
       </Typography>
       <Box sx={{ width: "70%" }}>
@@ -87,7 +62,7 @@ const LoginForm: React.FC = () => {
             margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={inputStyle} // Apply the input styles globally
+            sx={loginInputStyle} // Apply the input styles globally
           />
 
           {/* Password Field */}
@@ -99,11 +74,11 @@ const LoginForm: React.FC = () => {
             margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={inputStyle} // Apply the input styles globally
+            sx={loginInputStyle} // Apply the input styles globally
           />
 
           {error && (
-            <Typography color="error" sx={{ ...textStyle, marginTop: 2 }}>
+            <Typography color="error" sx={{ ...loginTextStyle, marginTop: 2 }}>
               {error}
             </Typography>
           )}
@@ -130,7 +105,7 @@ const LoginForm: React.FC = () => {
       </Box>
 
       <Box sx={{ marginTop: 2, marginBottom: 17 }}>
-        <Typography variant="body2" sx={textStyle}>
+        <Typography variant="body2" sx={loginTextStyle}>
           Don't have an account?{" "}
           <Link
             to="/signup"
