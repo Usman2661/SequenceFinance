@@ -15,7 +15,7 @@ const Login: React.FC = () => {
       container
       direction={"row"}
       sx={{
-        backgroundColor: "#212f3d",
+        backgroundColor: "#2C2739",
         height: "100vh",
         margin: 0,
       }}
@@ -30,17 +30,19 @@ const Login: React.FC = () => {
             height: "100%", // Ensure the card takes the full height of the container
             display: "flex", // Allows the content to fill the card properly
             flexDirection: "column", // Ensures the content is stacked vertically
-            borderRadius: "16px",
+            borderRadius: "16px", // Rounded corners for the card
             position: "relative", // Make sure the card has relative positioning
+            overflow: "hidden", // Prevent the image from overflowing
           }}
         >
           <img
-            src="src/assets/loginImage.jpg"
+            src="src/assets/loginLatest.jpg"
             alt="Login"
             style={{
               width: "100%", // Make the image fill the width of the container
               height: "100%", // Make the image fill the height of the container
               objectFit: "cover", // Ensures the image covers the space without distortion
+              borderRadius: "inherit", // Inherit the card's border radius
             }}
           />
           <Typography

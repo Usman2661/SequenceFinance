@@ -36,7 +36,7 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
         borderRadius: 2,
         height: "100%",
         color: "white", // Global text color
-        backgroundColor: "#212f3d", // Dark background
+        backgroundColor: "#2C2739", // Dark background
         padding: 3,
       }}
     >
@@ -48,7 +48,7 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
           marginBottom: 2,
         }}
       />
-      <Typography variant="h4" sx={loginTextStyle}>
+      <Typography variant="h4" sx={{ ...loginTextStyle, color: "white" }}>
         Welcome Back!
       </Typography>
       <Typography variant="body2" sx={{ ...loginTextStyle, fontSize: "14px" }}>
@@ -93,12 +93,11 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
             fullWidth
             sx={{
               marginTop: "10px",
-              backgroundColor: "#134b4e",
+              backgroundColor: "#6E54B5",
               color: "white",
-              borderRadius: "50px",
               padding: "10px 20px",
               "&:hover": {
-                backgroundColor: "#87b6b6",
+                backgroundColor: "#6E54B5",
               },
             }}
           >
@@ -110,12 +109,16 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
       <Box sx={{ marginTop: 2, marginBottom: 17 }}>
         <Typography variant="body2" sx={loginTextStyle}>
           Don't have an account?{" "}
-          <p
-            style={{ color: "#87b6b6", textDecoration: "none" }}
+          <span
+            style={{
+              color: "#6E54B5",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
             onClick={toggleLoginState}
           >
             Sign up here
-          </p>
+          </span>
         </Typography>
       </Box>
     </Box>

@@ -44,7 +44,7 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
         borderRadius: 2,
         height: "100%",
         color: "white", // Global text color
-        backgroundColor: "#212f3d", // Dark background
+        backgroundColor: "#2C2739", // Dark background
         padding: 3,
       }}
     >
