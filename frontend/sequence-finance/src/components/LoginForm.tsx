@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
-import { PersonOutline } from "@mui/icons-material";
+
 import { loginTextStyle } from "../constants/text";
 import { loginInputStyle } from "../constants/inputs";
+import { loginButtonStyle } from "../constants/button";
 
 interface LoginProps {
   toggleLoginState: () => void; // Define the type of the function
@@ -32,23 +33,15 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        borderRadius: 2,
-        height: "100%",
+        alignItems: "center", // Centers horizontally
+        justifyContent: "center", // Centers vertically
+        height: "100vh", // Ensures full viewport height
         color: "white", // Global text color
         backgroundColor: "#2C2739", // Dark background
-        padding: 3,
+        padding: 3, // Padding around the content
       }}
     >
-      <PersonOutline
-        sx={{
-          fontSize: 64,
-          color: "white", // Icon color
-          marginTop: 16,
-          marginBottom: 2,
-        }}
-      />
-      <Typography variant="h4" sx={{ ...loginTextStyle, color: "white" }}>
+      <Typography variant="h2" sx={{ color: "white", fontWeight: 200 }}>
         Welcome Back!
       </Typography>
       <Typography variant="body2" sx={{ ...loginTextStyle, fontSize: "14px" }}>
@@ -58,19 +51,22 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           {/* Email Field */}
           <TextField
-            label="Email"
+            label="Enter your email"
             type="email"
             fullWidth
             required
             margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={loginInputStyle} // Apply the input styles globally
+            sx={{
+              ...loginInputStyle,
+            }}
           />
 
           {/* Password Field */}
           <TextField
-            label="Password"
+            hiddenLabel
+            label="Enter your password"
             type="password"
             fullWidth
             required
@@ -91,15 +87,7 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
             variant="contained"
             color="primary"
             fullWidth
-            sx={{
-              marginTop: "10px",
-              backgroundColor: "#6E54B5",
-              color: "white",
-              padding: "10px 20px",
-              "&:hover": {
-                backgroundColor: "#6E54B5",
-              },
-            }}
+            sx={{ ...loginButtonStyle }}
           >
             Login
           </Button>
