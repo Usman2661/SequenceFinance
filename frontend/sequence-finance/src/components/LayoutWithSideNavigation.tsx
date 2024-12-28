@@ -12,7 +12,7 @@ const LayoutWithSideNavigation: React.FC<LayoutWithSideNavigationProps> = ({
   return (
     <div style={{ display: "flex" }}>
       <SideNavigation />
-      <div style={{ marginLeft: "250px", width: "100%" }}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 };
