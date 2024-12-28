@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import { loginTextStyle } from "../constants/text";
 import { loginInputStartProps, loginInputStyle } from "../constants/inputs";
@@ -13,7 +21,12 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
   // State to manage form inputs
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
@@ -61,8 +74,10 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
             sx={{
               ...loginInputStyle,
             }}
-            InputLabelProps={{
-              sx: loginInputStartProps,
+            slotProps={{
+              inputLabel: {
+                sx: loginInputStartProps,
+              },
             }}
           />
 
@@ -70,15 +85,30 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
           <TextField
             hiddenLabel
             label="Enter your password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             fullWidth
             required
             margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={loginInputStyle} // Apply the input styles globally
-            InputLabelProps={{
-              sx: loginInputStartProps,
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      sx={{ color: "white" }}
+                      onClick={handleTogglePasswordVisibility}
+                      edge="end"
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
+              inputLabel: {
+                sx: loginInputStartProps, // Apply the label styles using slotProps
+              },
             }}
           />
 

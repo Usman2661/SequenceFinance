@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import { loginTextStyle } from "../constants/text";
 import { loginInputStartProps, loginInputStyle } from "../constants/inputs";
@@ -17,6 +25,11 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
   const [lastName, setLastName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
@@ -69,8 +82,10 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 sx={loginInputStyle} // Apply the input styles globally
-                InputLabelProps={{
-                  sx: loginInputStartProps,
+                slotProps={{
+                  inputLabel: {
+                    sx: loginInputStartProps,
+                  },
                 }}
               />
             </Grid>
@@ -85,8 +100,10 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 sx={loginInputStyle} // Apply the input styles globally
-                InputLabelProps={{
-                  sx: loginInputStartProps,
+                slotProps={{
+                  inputLabel: {
+                    sx: loginInputStartProps,
+                  },
                 }}
               />
             </Grid>
@@ -101,22 +118,40 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             sx={loginInputStyle} // Apply the input styles globally\
-            InputLabelProps={{
-              sx: loginInputStartProps,
+            slotProps={{
+              inputLabel: {
+                sx: loginInputStartProps,
+              },
             }}
           />
           {/* Password Field */}
           <TextField
-            label="Password"
-            type="password"
+            hiddenLabel
+            label="Enter your password"
+            type={showPassword ? "text" : "password"}
             fullWidth
             required
             margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={loginInputStyle} // Apply the input styles globally
-            InputLabelProps={{
-              sx: loginInputStartProps,
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      sx={{ color: "white" }}
+                      onClick={handleTogglePasswordVisibility}
+                      edge="end"
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
+              inputLabel: {
+                sx: loginInputStartProps, // Apply the label styles using slotProps
+              },
             }}
           />
           {error && (
