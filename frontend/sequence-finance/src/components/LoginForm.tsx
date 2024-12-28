@@ -8,6 +8,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 import { loginTextStyle } from "../constants/text";
 import { loginInputStartProps, loginInputStyle } from "../constants/inputs";
@@ -24,6 +25,8 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const navigate = useNavigate(); // Hook to programmatically navigate
+
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -35,6 +38,7 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
     if (email === "" || password === "") {
       setError("Both email and password are required");
     } else {
+      navigate("/dashboard");
       setError(null);
       // Handle login logic here
       console.log("Email:", email, "Password:", password);
