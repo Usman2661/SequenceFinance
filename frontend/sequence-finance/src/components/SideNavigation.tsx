@@ -1,16 +1,16 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import Toolbar from "@mui/material/Toolbar";
+
+import { Explore, FormatListBulleted, Money } from "@mui/icons-material";
+import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -19,8 +19,8 @@ interface SideNavigationProps {
 }
 
 const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   console.log(isClosing);
   const handleDrawerClose = () => {
@@ -32,31 +32,52 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
     setIsClosing(false);
   };
 
+  const returnIcon = (text: string) => {
+    switch (text) {
+      case "Dashboard":
+        return <Explore />;
+      case "Payment":
+        return <FormatListBulleted />;
+      case "Transaction":
+        return <Money />;
+      case "Cards":
+        return <Money />;
+      case "Capitals":
+        return <Money />;
+      case "Reports":
+        return <Money />;
+      case "Vaults":
+        return <Money />;
+      case "Earn":
+        return <Money />;
+    }
+  };
+
   const drawer = (
     <div>
-      <Toolbar />
+      <Typography variant="h4">Sequence</Typography>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {["Dashboard", "Payment", "Transaction", "Cards"].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
+                {returnIcon(text)}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Capitals", "Vaults", "Reports", "Earn"].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
+                {returnIcon(text)}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -91,6 +112,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "#f5f7f9",
             },
           }}
         >
@@ -103,6 +125,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "#f5f7f9",
             },
           }}
           open
