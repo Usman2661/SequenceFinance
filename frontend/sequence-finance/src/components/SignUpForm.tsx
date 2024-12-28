@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
 import { loginTextStyle } from "../constants/text";
-import { loginInputStyle } from "../constants/inputs";
+import { loginInputStartProps, loginInputStyle } from "../constants/inputs";
 import { loginButtonStyle } from "../constants/button";
 
 interface SignUpProps {
@@ -70,7 +70,7 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
                 onChange={(e) => setFirstName(e.target.value)}
                 sx={loginInputStyle} // Apply the input styles globally
                 InputLabelProps={{
-                  sx: { color: "red", "&.Mui-focused": { color: "green" } },
+                  sx: loginInputStartProps,
                 }}
               />
             </Grid>
@@ -85,6 +85,9 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 sx={loginInputStyle} // Apply the input styles globally
+                InputLabelProps={{
+                  sx: loginInputStartProps,
+                }}
               />
             </Grid>
           </Grid>
@@ -97,7 +100,10 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
             margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={loginInputStyle} // Apply the input styles globally
+            sx={loginInputStyle} // Apply the input styles globally\
+            InputLabelProps={{
+              sx: loginInputStartProps,
+            }}
           />
           {/* Password Field */}
           <TextField
@@ -109,6 +115,9 @@ const SignUpForm: React.FC<SignUpProps> = ({ toggleLoginState }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={loginInputStyle} // Apply the input styles globally
+            InputLabelProps={{
+              sx: loginInputStartProps,
+            }}
           />
           {error && (
             <Typography color="error" sx={{ ...loginTextStyle, marginTop: 2 }}>

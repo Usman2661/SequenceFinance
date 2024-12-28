@@ -18,3 +18,5 @@ export const loginInputStyle = {
     },
   },
 };
+
+export const loginInputStartProps = { "&.Mui-focused": { color: "white" } };

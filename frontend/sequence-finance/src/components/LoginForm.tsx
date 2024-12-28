@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 
 import { loginTextStyle } from "../constants/text";
-import { loginInputStyle } from "../constants/inputs";
+import { loginInputStartProps, loginInputStyle } from "../constants/inputs";
 import { loginButtonStyle } from "../constants/button";
 
 interface LoginProps {
@@ -61,6 +61,9 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
             sx={{
               ...loginInputStyle,
             }}
+            InputLabelProps={{
+              sx: loginInputStartProps,
+            }}
           />
 
           {/* Password Field */}
@@ -74,6 +77,9 @@ const LoginForm: React.FC<LoginProps> = ({ toggleLoginState }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={loginInputStyle} // Apply the input styles globally
+            InputLabelProps={{
+              sx: loginInputStartProps,
+            }}
           />
 
           {error && (
