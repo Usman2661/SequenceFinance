@@ -1,92 +1,8 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import {
-  Box,
-  CssBaseline,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import Switch, { SwitchProps } from "@mui/material/Switch";
-import {
-  Explore,
-  FormatListBulleted,
-  GroupWork,
-  CreditCard,
-  LibraryBooks,
-  Redeem,
-  ElectricBolt,
-  RequestQuote,
-  SwapHoriz,
-  Settings,
-  Help,
-  Diamond,
-} from "@mui/icons-material";
+import { Box, CssBaseline, Divider, Drawer, Typography } from "@mui/material";
 
-const IOSSwitch = styled((props: SwitchProps) => (
-  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
-  width: 42,
-  height: 26,
-  padding: 0,
-  "& .MuiSwitch-switchBase": {
-    padding: 0,
-    margin: 2,
-    transitionDuration: "300ms",
-    "&.Mui-checked": {
-      transform: "translateX(16px)",
-      color: "#fff",
-      "& + .MuiSwitch-track": {
-        backgroundColor: "#65C466",
-        opacity: 1,
-        border: 0,
-        ...theme.applyStyles("dark", {
-          backgroundColor: "#2ECA45",
-        }),
-      },
-      "&.Mui-disabled + .MuiSwitch-track": {
-        opacity: 0.5,
-      },
-    },
-    "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: "#33cf4d",
-      border: "6px solid #fff",
-    },
-    "&.Mui-disabled .MuiSwitch-thumb": {
-      color: theme.palette.grey[100],
-      ...theme.applyStyles("dark", {
-        color: theme.palette.grey[600],
-      }),
-    },
-    "&.Mui-disabled + .MuiSwitch-track": {
-      opacity: 0.7,
-      ...theme.applyStyles("dark", {
-        opacity: 0.3,
-      }),
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    boxSizing: "border-box",
-    width: 22,
-    height: 22,
-  },
-  "& .MuiSwitch-track": {
-    borderRadius: 26 / 2,
-    backgroundColor: "#E9E9EA",
-    opacity: 1,
-    transition: theme.transitions.create(["background-color"], {
-      duration: 500,
-    }),
-    ...theme.applyStyles("dark", {
-      backgroundColor: "#39393D",
-    }),
-  },
-}));
+import { GroupWork } from "@mui/icons-material";
+import NavbarListItems from "./ListItems";
 
 const drawerWidth = 240;
 
@@ -108,33 +24,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
     setIsClosing(false);
   };
 
-  const returnIcon = (text: string) => {
-    switch (text) {
-      case "Dashboard":
-        return <Explore />;
-      case "Payment":
-        return <SwapHoriz />;
-      case "Transaction":
-        return <FormatListBulleted />;
-      case "Cards":
-        return <CreditCard />;
-      case "Capitals":
-        return <RequestQuote />;
-      case "Reports":
-        return <LibraryBooks />;
-      case "Vaults":
-        return <ElectricBolt />;
-      case "Earn":
-        return <Redeem />;
-      case "Settings":
-        return <Settings />;
-      case "Help":
-        return <Help />;
-      case "Pro Mode":
-        return <Diamond />;
-    }
-  };
-
   const drawer = (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <Box sx={{ display: "flex", alignItems: "center", padding: 3 }}>
@@ -146,50 +35,17 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
         </Typography>
       </Box>
       <Divider />
-      <List>
-        {["Dashboard", "Payment", "Transaction", "Cards"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-                {returnIcon(text)}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <NavbarListItems
+        items={["Dashboard", "Payment", "Transaction", "Cards"]}
+      />
+
       <Divider />
-      <List>
-        {["Capitals", "Vaults", "Reports", "Earn"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-                {returnIcon(text)}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <NavbarListItems items={["Capitals", "Vaults", "Reports", "Earn"]} />
 
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
+      <NavbarListItems items={["Settings", "Help", "Pro Mode"]} />
 
-      <List>
-        {["Settings", "Help", "Pro Mode"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-                {returnIcon(text)}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
-              {text === "Pro Mode" && (
-                <IOSSwitch sx={{ m: 1 }} defaultChecked />
-              )}
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
       <Box sx={{ display: "flex", borderRadius: 100, color: "white" }}></Box>
     </Box>
   );
