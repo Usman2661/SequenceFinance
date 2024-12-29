@@ -1,16 +1,92 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import { styled } from "@mui/material/styles";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import {
+  Explore,
+  FormatListBulleted,
+  GroupWork,
+  CreditCard,
+  LibraryBooks,
+  Redeem,
+  ElectricBolt,
+  RequestQuote,
+  SwapHoriz,
+  Settings,
+  Help,
+  Diamond,
+} from "@mui/icons-material";
 
-import { Explore, FormatListBulleted, Money } from "@mui/icons-material";
-import { Typography } from "@mui/material";
+const IOSSwitch = styled((props: SwitchProps) => (
+  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+))(({ theme }) => ({
+  width: 42,
+  height: 26,
+  padding: 0,
+  "& .MuiSwitch-switchBase": {
+    padding: 0,
+    margin: 2,
+    transitionDuration: "300ms",
+    "&.Mui-checked": {
+      transform: "translateX(16px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        backgroundColor: "#65C466",
+        opacity: 1,
+        border: 0,
+        ...theme.applyStyles("dark", {
+          backgroundColor: "#2ECA45",
+        }),
+      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: 0.5,
+      },
+    },
+    "&.Mui-focusVisible .MuiSwitch-thumb": {
+      color: "#33cf4d",
+      border: "6px solid #fff",
+    },
+    "&.Mui-disabled .MuiSwitch-thumb": {
+      color: theme.palette.grey[100],
+      ...theme.applyStyles("dark", {
+        color: theme.palette.grey[600],
+      }),
+    },
+    "&.Mui-disabled + .MuiSwitch-track": {
+      opacity: 0.7,
+      ...theme.applyStyles("dark", {
+        opacity: 0.3,
+      }),
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxSizing: "border-box",
+    width: 22,
+    height: 22,
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 26 / 2,
+    backgroundColor: "#E9E9EA",
+    opacity: 1,
+    transition: theme.transitions.create(["background-color"], {
+      duration: 500,
+    }),
+    ...theme.applyStyles("dark", {
+      backgroundColor: "#39393D",
+    }),
+  },
+}));
 
 const drawerWidth = 240;
 
@@ -37,25 +113,38 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
       case "Dashboard":
         return <Explore />;
       case "Payment":
-        return <FormatListBulleted />;
+        return <SwapHoriz />;
       case "Transaction":
-        return <Money />;
+        return <FormatListBulleted />;
       case "Cards":
-        return <Money />;
+        return <CreditCard />;
       case "Capitals":
-        return <Money />;
+        return <RequestQuote />;
       case "Reports":
-        return <Money />;
+        return <LibraryBooks />;
       case "Vaults":
-        return <Money />;
+        return <ElectricBolt />;
       case "Earn":
-        return <Money />;
+        return <Redeem />;
+      case "Settings":
+        return <Settings />;
+      case "Help":
+        return <Help />;
+      case "Pro Mode":
+        return <Diamond />;
     }
   };
 
   const drawer = (
-    <div>
-      <Typography variant="h4">Sequence</Typography>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Box sx={{ display: "flex", alignItems: "center", padding: 3 }}>
+        <GroupWork
+          sx={{ color: "#025864", marginRight: 1, fontSize: "2rem" }}
+        />
+        <Typography variant="h5" sx={{ color: "#025864", fontWeight: 500 }}>
+          Sequence
+        </Typography>
+      </Box>
       <Divider />
       <List>
         {["Dashboard", "Payment", "Transaction", "Cards"].map((text) => (
@@ -82,7 +171,27 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
           </ListItem>
         ))}
       </List>
-    </div>
+
+      <Box sx={{ flexGrow: 1 }} />
+      <Divider />
+
+      <List>
+        {["Settings", "Help", "Pro Mode"].map((text) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
+                {returnIcon(text)}
+              </ListItemIcon>
+              <ListItemText primary={text} sx={{ marginLeft: 0 }} />
+              {text === "Pro Mode" && (
+                <IOSSwitch sx={{ m: 1 }} defaultChecked />
+              )}
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Box sx={{ display: "flex", borderRadius: 100, color: "white" }}></Box>
+    </Box>
   );
 
   // Remove this const when copying and pasting into your project.
