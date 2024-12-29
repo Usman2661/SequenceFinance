@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Box, CssBaseline, Divider, Drawer, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  Typography,
+} from "@mui/material";
 
 import { GroupWork } from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
+import { deepPurple } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
@@ -46,7 +54,32 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
       <Divider />
       <NavbarListItems items={["Settings", "Help", "Pro Mode"]} />
 
-      <Box sx={{ display: "flex", borderRadius: 100, color: "white" }}></Box>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          borderRadius: "10px",
+          padding: "10px",
+          marginLeft: "10px",
+          marginRight: "10px",
+          boxShadow: 2,
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "row",
+        }}
+      >
+        <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
+        <Box sx={{ alignItems: "center", flexDirection: "row" }}>
+          <Typography sx={{ marginLeft: "10px" }}>Usman Ali</Typography>
+          <Typography sx={{ marginLeft: "10px", fontSize: 10 }}>
+            usmanusman136@hotmail.com
+          </Typography>
+        </Box>
+
+        {/* Added margin for spacing between avatar and text */}
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "center", padding: 3 }}>
+        <Typography sx={{ alignItems: "center" }}>Sequence 2025</Typography>
+      </Box>
     </Box>
   );
 
