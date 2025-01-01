@@ -6,3 +6,4 @@ Total Time = 6 hours 30 mins
 - 26th December 2024 (Thursday) = 1 hour
 - 28th December 2024 (Saturday) = 1 hour
 - 29th December 2024 (Sunday) = 1 hour
+- 2st Jan 2025 (Wednesday) = 30 mins
