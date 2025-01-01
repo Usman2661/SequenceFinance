@@ -21,6 +21,7 @@ interface SideNavigationProps {
 const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [activeNavbarItem, setActiveNavbarItem] = useState("Dashboard");
 
   console.log(isClosing);
   const handleDrawerClose = () => {
@@ -32,9 +33,20 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
     setIsClosing(false);
   };
 
+  const handleSetActiveNavbarItem = (item: string) => {
+    setActiveNavbarItem(item);
+  };
+
   const drawer = (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      <Box sx={{ display: "flex", alignItems: "center", padding: 3 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 3,
+        }}
+      >
         <GroupWork
           sx={{ color: "#025864", marginRight: 1, fontSize: "2rem" }}
         />
@@ -43,17 +55,45 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
         </Typography>
       </Box>
       <Divider />
+      <Typography
+        sx={{
+          marginTop: 2,
+          marginBottom: 0,
+          color: "#909497",
+          marginLeft: "20px",
+          fontWeight: 350,
+          fontSize: 14,
+        }}
+      >
+        General
+      </Typography>
       <NavbarListItems
-        items={["Dashboard", "Payment", "Transaction", "Cards"]}
+        navbarItems={["Dashboard", "Payment", "Transaction", "Cards"]}
+        setActiveNavbarItem={handleSetActiveNavbarItem}
+        activeNavbarItem={activeNavbarItem}
       />
-
-      <Divider />
-      <NavbarListItems items={["Capitals", "Vaults", "Reports", "Earn"]} />
-
+      <Typography
+        sx={{
+          color: "#909497",
+          marginLeft: "20px",
+          fontWeight: 350,
+          fontSize: 14,
+        }}
+      >
+        Support
+      </Typography>{" "}
+      <NavbarListItems
+        navbarItems={["Capitals", "Vaults", "Reports", "Earn"]}
+        setActiveNavbarItem={handleSetActiveNavbarItem}
+        activeNavbarItem={activeNavbarItem}
+      />
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
-      <NavbarListItems items={["Settings", "Help", "Pro Mode"]} />
-
+      <NavbarListItems
+        navbarItems={["Settings", "Help", "Pro Mode"]}
+        setActiveNavbarItem={handleSetActiveNavbarItem}
+        activeNavbarItem={activeNavbarItem}
+      />
       <Box
         sx={{
           backgroundColor: "white",
@@ -70,15 +110,24 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
         <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
         <Box sx={{ alignItems: "center", flexDirection: "row" }}>
           <Typography sx={{ marginLeft: "10px" }}>Usman Ali</Typography>
-          <Typography sx={{ marginLeft: "10px", fontSize: 10 }}>
-            usmanusman136@hotmail.com
+          <Typography sx={{ marginLeft: "10px", fontSize: 12 }}>
+            {"usmanusman136@hotmail.com".length > 15
+              ? "usmanusman136@hotmail.com".slice(0, 15) + ".."
+              : "usmanusman136@hotmail.com"}
           </Typography>
         </Box>
 
         {/* Added margin for spacing between avatar and text */}
       </Box>
-      <Box sx={{ display: "flex", alignItems: "center", padding: 3 }}>
-        <Typography sx={{ alignItems: "center" }}>Sequence 2025</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 2,
+        }}
+      >
+        <Typography sx={{ color: "#909497" }}>Sequence Finance</Typography>
       </Box>
     </Box>
   );

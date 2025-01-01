@@ -9,18 +9,42 @@ import {
 import { returnIcon } from "../utils/navbar";
 import { IOSSwitch } from "../utils/switch";
 
+interface NavbarListItemProps {
+  activeNavbarItem: string;
+  setActiveNavbarItem: (active: string) => void;
+  navbarItems: string[];
+}
+
 // Reusable List Component
-const NavbarListItems = ({ items }: { items: string[] }) => (
+const NavbarListItems: React.FC<NavbarListItemProps> = ({
+  navbarItems,
+  setActiveNavbarItem,
+  activeNavbarItem,
+}) => (
   <List>
-    {items.map((text) => (
-      <ListItem key={text} disablePadding>
-        <ListItemButton>
+    {navbarItems.map((text) => (
+      <ListItem
+        key={text}
+        disablePadding
+        sx={{
+          backgroundColor: activeNavbarItem === text ? "white" : "normal",
+          borderRadius: activeNavbarItem === text ? 10 : 0,
+          padding: activeNavbarItem === text ? 0.5 : 0,
+        }}
+      >
+        <ListItemButton onClick={() => setActiveNavbarItem(text)}>
           <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
             {returnIcon(text)}
           </ListItemIcon>
           <ListItemText
             primary={
-              <Typography sx={{ fontSize: 14, color: "black" }}>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  fontWeight: activeNavbarItem === text ? "bold" : "normal",
+                  color: text === activeNavbarItem ? "#025864" : "black",
+                }}
+              >
                 {text}
               </Typography>
             }
