@@ -5,6 +5,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  Box,
 } from "@mui/material";
 import { returnIcon } from "../utils/navbar";
 import { IOSSwitch } from "../utils/switch";
@@ -28,19 +29,20 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
         disablePadding
         sx={{
           backgroundColor: activeNavbarItem === text ? "white" : "normal",
-          borderRadius: activeNavbarItem === text ? 10 : 0,
-          padding: activeNavbarItem === text ? 0.5 : 0,
+          borderRadius: activeNavbarItem === text ? 2 : 0,
+          boxShadow: activeNavbarItem === text ? 1 : 0,
+          padding: activeNavbarItem === text ? 0 : 0,
         }}
       >
         <ListItemButton onClick={() => setActiveNavbarItem(text)}>
           <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-            {returnIcon(text)}
+            {returnIcon(text, activeNavbarItem)}
           </ListItemIcon>
           <ListItemText
             primary={
               <Typography
                 sx={{
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: activeNavbarItem === text ? "bold" : "normal",
                   color: text === activeNavbarItem ? "#025864" : "black",
                 }}
@@ -51,6 +53,21 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
             sx={{ marginLeft: 0 }}
           />
           {text === "Pro Mode" && <IOSSwitch sx={{ m: 1 }} defaultChecked />}
+          {text === "Earn" && (
+            <Box
+              sx={{
+                padding: 1,
+                borderRadius: 1,
+                backgroundColor: "green",
+              }}
+            >
+              <Typography
+                sx={{ fontSize: 12, fontWeight: 400, color: "white" }}
+              >
+                Earn $150
+              </Typography>
+            </Box>
+          )}
         </ListItemButton>
       </ListItem>
     ))}

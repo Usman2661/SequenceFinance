@@ -127,7 +127,9 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
           padding: 2,
         }}
       >
-        <Typography sx={{ color: "#909497" }}>Sequence Finance</Typography>
+        <Typography sx={{ color: "#909497", fontSize: 12 }}>
+          Sequence Finance
+        </Typography>
       </Box>
     </Box>
   );
