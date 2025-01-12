@@ -5,15 +5,17 @@ import {
   CssBaseline,
   Divider,
   Drawer,
+  IconButton,
   Typography,
 } from "@mui/material";
 
-import { GroupWork } from "@mui/icons-material";
+import { KeyboardDoubleArrowLeft, GroupWork } from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
 import { deepPurple } from "@mui/material/colors";
 import { getActiveColor } from "../utils/navbar";
 
-const drawerWidth = 240;
+const drawerWidthExpanded = 240;
+const drawerWidthCollapsed = 60; // Smaller width when collapsed
 
 interface SideNavigationProps {
   window?: () => Window;
@@ -29,6 +31,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [activeNavbarItem, setActiveNavbarItem] = useState("Dashboard");
+  const [collapsed, setCollapsed] = useState(false); // Added state to track collapse
+  const drawerWidth = collapsed ? drawerWidthCollapsed : drawerWidthExpanded;
 
   console.log(isClosing);
   const handleDrawerClose = () => {
@@ -42,6 +46,10 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   const handleSetActiveNavbarItem = (item: string) => {
     setActiveNavbarItem(item);
+  };
+
+  const toggleCollapse = () => {
+    setCollapsed(!collapsed); // Toggle collapsed state
   };
 
   const drawer = (
@@ -70,43 +78,67 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         >
           Sequence
         </Typography>
+        <IconButton
+          sx={{
+            marginLeft: 3,
+            width: "20px",
+            height: "30px",
+            border: "2px solid #909497",
+            borderRadius: "2px",
+            backgroundColor: "white",
+            color: "grey",
+            "&:hover": {
+              backgroundColor: "white",
+            },
+          }}
+          onClick={toggleCollapse}
+        >
+          <KeyboardDoubleArrowLeft />
+        </IconButton>
       </Box>
       <Divider />
-      <Typography
-        sx={{
-          marginTop: 2,
-          marginBottom: 0,
-          color: "#909497",
-          marginLeft: "20px",
-          fontWeight: 350,
-          fontSize: 14,
-        }}
-      >
-        General
-      </Typography>
+      {collapsed === false && (
+        <Typography
+          sx={{
+            marginTop: 2,
+            marginBottom: 0,
+            color: "#909497",
+            marginLeft: "20px",
+            fontWeight: 350,
+            fontSize: 14,
+          }}
+        >
+          General
+        </Typography>
+      )}
       <NavbarListItems
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
         navbarItems={["Dashboard", "Payment", "Transaction", "Cards"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
+        collapsed={collapsed}
       />
-      <Typography
-        sx={{
-          color: "#909497",
-          marginLeft: "20px",
-          fontWeight: 350,
-          fontSize: 14,
-        }}
-      >
-        Support
-      </Typography>{" "}
+      {collapsed === false && (
+        <Typography
+          sx={{
+            color: "#909497",
+            marginLeft: "20px",
+            fontWeight: 350,
+            fontSize: 14,
+          }}
+        >
+          Support
+        </Typography>
+      )}
+
       <NavbarListItems
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
         navbarItems={["Capitals", "Vaults", "Reports", "Earn"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
+        collapsed={collapsed}
       />
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
@@ -116,6 +148,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         navbarItems={["Settings", "Help", "Dark Mode", "Pro Mode"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
+        collapsed={collapsed}
       />
       <Box
         sx={{
@@ -149,18 +182,20 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
         {/* Added margin for spacing between avatar and text */}
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 2,
-        }}
-      >
-        <Typography sx={{ color: "#909497", fontSize: 12 }}>
-          Sequence Finance
-        </Typography>
-      </Box>
+      {!collapsed && (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 2,
+          }}
+        >
+          <Typography sx={{ color: "#909497", fontSize: 12 }}>
+            Sequence Finance
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 
