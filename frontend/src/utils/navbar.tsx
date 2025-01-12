@@ -14,43 +14,141 @@ import {
 } from "@mui/icons-material";
 
 // Using an object to map the text to icons for cleaner code
-export const returnIcon = (text: string, activeItem: string) => {
+export const returnIcon = (
+  text: string,
+  activeItem: string,
+  darkMode: boolean
+) => {
   const iconMap: { [key: string]: JSX.Element } = {
     Dashboard: (
-      <Explore sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <Explore
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     Payment: (
-      <SwapHoriz sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <SwapHoriz
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     Transaction: (
       <FormatListBulleted
-        sx={{ color: text === activeItem ? "#025864" : "black" }}
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
       />
     ),
     Cards: (
-      <CreditCard sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <CreditCard
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     Capitals: (
-      <RequestQuote sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <RequestQuote
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     Reports: (
-      <LibraryBooks sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <LibraryBooks
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     Vaults: (
-      <ElectricBolt sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <ElectricBolt
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
-    Earn: <Redeem sx={{ color: text === activeItem ? "#025864" : "black" }} />,
+    Earn: (
+      <Redeem
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
+    ),
     Settings: (
-      <Settings sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <Settings
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
-    Help: <Help sx={{ color: text === activeItem ? "#025864" : "black" }} />,
+    Help: (
+      <Help
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
+    ),
     "Pro Mode": (
-      <Diamond sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <Diamond
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
     "Dark Mode": (
-      <DarkMode sx={{ color: text === activeItem ? "#025864" : "black" }} />
+      <DarkMode
+        sx={{
+          color:
+            text === activeItem
+              ? getActiveColor(darkMode, "#025864", "white")
+              : getActiveColor(darkMode, "black", "white"),
+        }}
+      />
     ),
   };
 
-  return iconMap[text] || null; // Return null if no matching icon is found
+  return iconMap[text] || null;
+};
+
+export const getActiveColor = (
+  darkMode: boolean,
+  normalColor: string,
+  darkModeColor: string
+) => {
+  return darkMode ? darkModeColor : normalColor;
 };

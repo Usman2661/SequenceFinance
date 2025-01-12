@@ -11,6 +11,7 @@ import {
 import { GroupWork } from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
 import { deepPurple } from "@mui/material/colors";
+import { getActiveColor } from "../utils/navbar";
 
 const drawerWidth = 240;
 
@@ -54,9 +55,19 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         }}
       >
         <GroupWork
-          sx={{ color: "#025864", marginRight: 1, fontSize: "2rem" }}
+          sx={{
+            color: getActiveColor(darkMode, "#025864", "white"),
+            marginRight: 1,
+            fontSize: "2rem",
+          }}
         />
-        <Typography variant="h5" sx={{ color: "#025864", fontWeight: 500 }}>
+        <Typography
+          variant="h5"
+          sx={{
+            color: getActiveColor(darkMode, "#025864", "white"),
+            fontWeight: 500,
+          }}
+        >
           Sequence
         </Typography>
       </Box>
@@ -108,7 +119,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       />
       <Box
         sx={{
-          backgroundColor: "white",
+          backgroundColor: getActiveColor(darkMode, "white", "#2d2d2d"),
           borderRadius: "10px",
           padding: "10px",
           marginLeft: "10px",
@@ -119,7 +130,14 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           flexDirection: "row",
         }}
       >
-        <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
+        <Avatar
+          sx={{
+            bgcolor: deepPurple[500],
+            color: "white",
+          }}
+        >
+          U
+        </Avatar>
         <Box sx={{ alignItems: "center", flexDirection: "row" }}>
           <Typography sx={{ marginLeft: "10px" }}>Usman Ali</Typography>
           <Typography sx={{ marginLeft: "10px", fontSize: 12 }}>
@@ -186,7 +204,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: darkMode ? "black" : "#f5f7f9",
+              backgroundColor: getActiveColor(darkMode, "#f5f7f9", "black"),
             },
           }}
           open

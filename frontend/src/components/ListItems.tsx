@@ -7,7 +7,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { returnIcon } from "../utils/navbar";
+import { getActiveColor, returnIcon } from "../utils/navbar";
 import { IOSSwitch } from "../utils/switch";
 
 interface NavbarListItemProps {
@@ -32,7 +32,10 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
         key={text}
         disablePadding
         sx={{
-          backgroundColor: activeNavbarItem === text ? "white" : "normal",
+          backgroundColor:
+            activeNavbarItem === text
+              ? getActiveColor(darkMode, "white", "#2d2d2d")
+              : "normal",
           borderRadius: activeNavbarItem === text ? 2 : 0,
           boxShadow: activeNavbarItem === text ? 1 : 0,
           padding: activeNavbarItem === text ? 0 : 0,
@@ -40,7 +43,7 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
       >
         <ListItemButton onClick={() => setActiveNavbarItem(text)}>
           <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-            {returnIcon(text, activeNavbarItem)}
+            {returnIcon(text, activeNavbarItem, darkMode)}
           </ListItemIcon>
           <ListItemText
             primary={
@@ -48,7 +51,14 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
                 sx={{
                   fontSize: 13,
                   fontWeight: activeNavbarItem === text ? "bold" : "normal",
-                  color: text === activeNavbarItem ? "#025864" : "black",
+                  color:
+                    text === activeNavbarItem
+                      ? darkMode
+                        ? "white"
+                        : "#025864"
+                      : darkMode
+                      ? "white"
+                      : "black",
                 }}
               >
                 {text}
