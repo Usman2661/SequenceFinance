@@ -90,7 +90,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
       <NavbarListItems
-        navbarItems={["Settings", "Help", "Pro Mode"]}
+        navbarItems={["Settings", "Help", "Dark Mode", "Pro Mode"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
       />

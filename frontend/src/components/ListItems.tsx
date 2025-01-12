@@ -42,7 +42,7 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
             primary={
               <Typography
                 sx={{
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: activeNavbarItem === text ? "bold" : "normal",
                   color: text === activeNavbarItem ? "#025864" : "black",
                 }}
@@ -53,6 +53,7 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
             sx={{ marginLeft: 0 }}
           />
           {text === "Pro Mode" && <IOSSwitch sx={{ m: 1 }} defaultChecked />}
+          {text === "Dark Mode" && <IOSSwitch sx={{ m: 1 }} defaultChecked />}
           {text === "Earn" && (
             <Box
               sx={{

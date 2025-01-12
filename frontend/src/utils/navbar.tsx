@@ -10,6 +10,7 @@ import {
   Settings,
   Help,
   Diamond,
+  DarkMode,
 } from "@mui/icons-material";
 
 // Using an object to map the text to icons for cleaner code
@@ -45,6 +46,9 @@ export const returnIcon = (text: string, activeItem: string) => {
     Help: <Help sx={{ color: text === activeItem ? "#025864" : "black" }} />,
     "Pro Mode": (
       <Diamond sx={{ color: text === activeItem ? "#025864" : "black" }} />
+    ),
+    "Dark Mode": (
+      <DarkMode sx={{ color: text === activeItem ? "#025864" : "black" }} />
     ),
   };
 
