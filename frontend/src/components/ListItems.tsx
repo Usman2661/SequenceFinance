@@ -14,6 +14,8 @@ interface NavbarListItemProps {
   activeNavbarItem: string;
   setActiveNavbarItem: (active: string) => void;
   navbarItems: string[];
+  darkMode: boolean;
+  toggleDarkMode: () => void;
 }
 
 // Reusable List Component
@@ -21,6 +23,8 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
   navbarItems,
   setActiveNavbarItem,
   activeNavbarItem,
+  darkMode,
+  toggleDarkMode,
 }) => (
   <List>
     {navbarItems.map((text) => (
@@ -53,7 +57,13 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
             sx={{ marginLeft: 0 }}
           />
           {text === "Pro Mode" && <IOSSwitch sx={{ m: 1 }} defaultChecked />}
-          {text === "Dark Mode" && <IOSSwitch sx={{ m: 1 }} defaultChecked />}
+          {text === "Dark Mode" && (
+            <IOSSwitch
+              sx={{ m: 1 }}
+              checked={darkMode ? true : false}
+              onChange={toggleDarkMode}
+            />
+          )}
           {text === "Earn" && (
             <Box
               sx={{

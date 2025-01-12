@@ -16,9 +16,15 @@ const drawerWidth = 240;
 
 interface SideNavigationProps {
   window?: () => Window;
+  darkMode: boolean;
+  toggleDarkMode: () => void;
 }
 
-const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
+const SideNavigation: React.FC<SideNavigationProps> = ({
+  window,
+  darkMode,
+  toggleDarkMode,
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [activeNavbarItem, setActiveNavbarItem] = useState("Dashboard");
@@ -68,6 +74,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
         General
       </Typography>
       <NavbarListItems
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
         navbarItems={["Dashboard", "Payment", "Transaction", "Cards"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
@@ -83,6 +91,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
         Support
       </Typography>{" "}
       <NavbarListItems
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
         navbarItems={["Capitals", "Vaults", "Reports", "Earn"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
@@ -90,6 +100,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
       <NavbarListItems
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
         navbarItems={["Settings", "Help", "Dark Mode", "Pro Mode"]}
         setActiveNavbarItem={handleSetActiveNavbarItem}
         activeNavbarItem={activeNavbarItem}
@@ -174,7 +186,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ window }) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#f5f7f9",
+              backgroundColor: darkMode ? "black" : "#f5f7f9",
             },
           }}
           open
