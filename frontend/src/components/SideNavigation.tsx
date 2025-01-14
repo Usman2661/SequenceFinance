@@ -9,7 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 
-import { KeyboardDoubleArrowLeft, GroupWork } from "@mui/icons-material";
+import {
+  KeyboardDoubleArrowLeft,
+  GroupWork,
+  KeyboardDoubleArrowRight,
+} from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
 import { deepPurple } from "@mui/material/colors";
 import { getActiveColor } from "../utils/navbar";
@@ -69,18 +73,20 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
             fontSize: "2rem",
           }}
         />
-        <Typography
-          variant="h5"
-          sx={{
-            color: getActiveColor(darkMode, "#025864", "white"),
-            fontWeight: 500,
-          }}
-        >
-          Sequence
-        </Typography>
+        {!collapsed && (
+          <Typography
+            variant="h5"
+            sx={{
+              color: getActiveColor(darkMode, "#025864", "white"),
+              fontWeight: 500,
+            }}
+          >
+            Sequence
+          </Typography>
+        )}
         <IconButton
           sx={{
-            marginLeft: 3,
+            marginLeft: collapsed ? 0 : 3,
             width: "20px",
             height: "30px",
             border: "2px solid #909497",
@@ -93,7 +99,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           }}
           onClick={toggleCollapse}
         >
-          <KeyboardDoubleArrowLeft />
+          {collapsed ? (
+            <KeyboardDoubleArrowRight />
+          ) : (
+            <KeyboardDoubleArrowLeft />
+          )}
         </IconButton>
       </Box>
       <Divider />
@@ -171,14 +181,16 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         >
           U
         </Avatar>
-        <Box sx={{ alignItems: "center", flexDirection: "row" }}>
-          <Typography sx={{ marginLeft: "10px" }}>Usman Ali</Typography>
-          <Typography sx={{ marginLeft: "10px", fontSize: 12 }}>
-            {"usmanusman136@hotmail.com".length > 15
-              ? "usmanusman136@hotmail.com".slice(0, 15) + ".."
-              : "usmanusman136@hotmail.com"}
-          </Typography>
-        </Box>
+        {!collapsed && (
+          <Box sx={{ alignItems: "center", flexDirection: "row" }}>
+            <Typography sx={{ marginLeft: "10px" }}>Usman Ali</Typography>
+            <Typography sx={{ marginLeft: "10px", fontSize: 12 }}>
+              {"usmanusman136@hotmail.com".length > 15
+                ? "usmanusman136@hotmail.com".slice(0, 15) + ".."
+                : "usmanusman136@hotmail.com"}
+            </Typography>
+          </Box>
+        )}
 
         {/* Added margin for spacing between avatar and text */}
       </Box>
