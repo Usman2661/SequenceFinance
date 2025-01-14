@@ -9,11 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import {
-  KeyboardDoubleArrowLeft,
-  GroupWork,
-  KeyboardDoubleArrowRight,
-} from "@mui/icons-material";
+import { KeyboardTab, GroupWork } from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
 import { deepPurple } from "@mui/material/colors";
 import { getActiveColor } from "../utils/navbar";
@@ -87,27 +83,27 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         <IconButton
           sx={{
             marginLeft: collapsed ? 0 : 3,
-            width: "20px",
-            height: "30px",
-            border: "2px solid #909497",
-            borderRadius: "2px",
+            width: collapsed ? "10px" : "25px",
+            height: "25px",
+            border: "1px solid #b3b6b7",
+            borderRadius: "5px",
             backgroundColor: "white",
-            color: "grey",
+            color: "#797d7f",
             "&:hover": {
               backgroundColor: "white",
+            },
+            "& .MuiSvgIcon-root": {
+              transform: collapsed ? "" : "rotate(180deg)",
+              transition: "transform 0.3s ease",
             },
           }}
           onClick={toggleCollapse}
         >
-          {collapsed ? (
-            <KeyboardDoubleArrowRight />
-          ) : (
-            <KeyboardDoubleArrowLeft />
-          )}
+          <KeyboardTab sx={{ fontSize: collapsed ? "small" : "medium" }} />
         </IconButton>
       </Box>
       <Divider />
-      {collapsed === false && (
+      {!collapsed && (
         <Typography
           sx={{
             marginTop: 2,
@@ -162,12 +158,15 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       />
       <Box
         sx={{
-          backgroundColor: getActiveColor(darkMode, "white", "#2d2d2d"),
-          borderRadius: "10px",
-          padding: "10px",
-          marginLeft: "10px",
-          marginRight: "10px",
-          boxShadow: 2,
+          backgroundColor: collapsed
+            ? getActiveColor(darkMode, "#f5f7f9", "black")
+            : getActiveColor(darkMode, "white", "#2d2d2d"),
+          borderRadius: collapsed ? "0px" : "10px",
+          padding: collapsed ? "2px" : "10px",
+          marginLeft: collapsed ? "5px" : "10px",
+          marginRight: collapsed ? "5px" : "10px",
+          marginBottom: collapsed ? "5px" : "10px",
+          boxShadow: collapsed ? 0 : 2,
           display: "flex",
           alignItems: "center",
           flexDirection: "row",
@@ -191,8 +190,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
             </Typography>
           </Box>
         )}
-
-        {/* Added margin for spacing between avatar and text */}
       </Box>
       {!collapsed && (
         <Box
