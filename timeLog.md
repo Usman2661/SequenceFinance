@@ -9,3 +9,4 @@ Total Time = 8 hours 20 mins
 - 2st Jan 2025 (Wednesday) = 30 mins
 - 3rd Jan 2025 (Wednesday) = 20 mins
 - 12th Jan 2025 (Sunday) = 1 hour 30 mins
+- 14th Jan 2025 (Tuesday) = 1 hour

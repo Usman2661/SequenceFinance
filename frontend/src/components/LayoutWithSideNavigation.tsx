@@ -16,7 +16,7 @@ const LayoutWithSideNavigation: React.FC<LayoutWithSideNavigationProps> = ({
   return (
     <div style={{ display: "flex" }}>
       <SideNavigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div>{children}</div>
+      <div style={{ width: "100%" }}>{children}</div>
     </div>
   );
 };
