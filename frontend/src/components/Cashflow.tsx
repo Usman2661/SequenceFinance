@@ -1,7 +1,7 @@
 import { Add, ArrowUpward, Autorenew } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
 
-const TotalBalance: React.FC = () => {
+const CashFlow: React.FC = () => {
   return (
     <Box
       sx={{
@@ -74,4 +74,4 @@ const TotalBalance: React.FC = () => {
   );
 };
 
-export default TotalBalance;
+export default CashFlow;
