@@ -1,4 +1,4 @@
-Total Time = 8 hours 20 mins
+Total Time = 9 hours 20 mins
 
 - 23rd December 2024 (Monday) = 1 hour
 - 24th December 2024 (Tuesday) = 1 hour
