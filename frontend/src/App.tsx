@@ -8,7 +8,7 @@ import LayoutWithSideNavigation from "./components/LayoutWithSideNavigation";
 import { useState } from "react";
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const lightTheme = createTheme({
     palette: {

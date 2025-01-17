@@ -32,7 +32,7 @@ const TotalBalance: React.FC = () => {
               marginLeft: 1,
             }}
           >
-            +15.87%
+            +15.87↗
           </Typography>
         </Box>
       </Box>

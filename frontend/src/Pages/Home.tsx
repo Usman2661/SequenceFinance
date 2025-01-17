@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid2";
 
 import TotalBalance from "../components/TotalBalance";
-import CashFlow from "../components/Cashflow";
+import FinancialWidgets from "../components/FinancialWidgets";
 
 const Home: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
           <TotalBalance />
         </Grid>
         <Grid size={{ xs: 12, sm: 12 }}>
-          <CashFlow />
+          <FinancialWidgets />
         </Grid>
       </Grid>
     </div>
