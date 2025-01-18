@@ -32,7 +32,7 @@ const FinancialWidget: React.FC<FinancialWidgetProps> = ({
   return (
     <Box
       sx={{
-        border: "1px solid #b3b6b7",
+        border: "1px solid #ecf0f1",
         borderRadius: 3,
         justifyContent: "space-between",
         display: "flex",
