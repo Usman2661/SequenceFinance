@@ -1,6 +1,7 @@
-import { AccountBalance } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import FinancialWidget from "./FinancialWidget";
+import { AccountType } from "../types/financial";
 
 const FinancialWidgets: React.FC = () => {
   return (
@@ -11,75 +12,31 @@ const FinancialWidgets: React.FC = () => {
         spacing={2}
       >
         <Grid size={{ xs: 4, sm: 4 }}>
-          <Box
-            sx={{
-              border: "1px solid #b3b6b7",
-              borderRadius: 3,
-              justifyContent: "space-between",
-              display: "flex",
-              flexDirection: "column",
-              padding: 4,
-            }}
-          >
-            <Box
-              display="flex"
-              flexDirection="row"
-              justifyContent={"space-between"}
-            >
-              <Box display={"flex"} flexDirection="row">
-                <AccountBalance color="success" />
-                <Typography marginLeft={2}>Business Account</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2" color="textSecondary">
-                  Last 30 days
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box display="flex" flexDirection="row" marginTop={2}>
-              <Typography variant="h3">$ 8098,09</Typography>
-              <Typography
-                color="#0fd47e"
-                sx={{
-                  fontSize: "1rem",
-                  marginTop: 3,
-                  marginLeft: 1,
-                }}
-              >
-                +15.87↗
-              </Typography>
-            </Box>
-            <Box display="flex" flexDirection="row" marginTop={1}>
-              <Typography variant="body2" color="textSecondary">
-                vs $ 7,09289 Last 30 days
-              </Typography>
-            </Box>
-          </Box>
+          <FinancialWidget
+            accountType={AccountType.BusinessAccount}
+            balance={1569.26}
+            period={30}
+            balanceChange={15.36}
+            previousBalance={13589.69}
+          />
         </Grid>
         <Grid size={{ xs: 4, sm: 4 }}>
-          <Box
-            sx={{
-              border: "1px solid #b3b6b7",
-              borderRadius: 3,
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 4,
-            }}
-          ></Box>
+          <FinancialWidget
+            accountType={AccountType.TotalSaving}
+            balance={96583.26}
+            period={30}
+            balanceChange={23.36}
+            previousBalance={76583.69}
+          />
         </Grid>
         <Grid size={{ xs: 4, sm: 4 }}>
-          <Box
-            sx={{
-              border: "1px solid #b3b6b7",
-              borderRadius: 3,
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 4,
-            }}
-          ></Box>
+          <FinancialWidget
+            accountType={AccountType.TaxReserve}
+            balance={586349.42}
+            period={30}
+            balanceChange={49.85}
+            previousBalance={869349.69}
+          />
         </Grid>
       </Grid>
     </Box>
