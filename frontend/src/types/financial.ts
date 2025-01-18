@@ -3,3 +3,8 @@ export enum AccountType {
   TotalSaving = "Total Saving",
   TaxReserve = "Tax Reserve",
 }
+
+export enum CashflowType {
+  Income = "Income",
+  Expense = "Expense",
+}

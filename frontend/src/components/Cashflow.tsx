@@ -1,5 +1,6 @@
 import { ImportExport, Settings } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { useState } from "react";
 import {
   Bar,
@@ -14,6 +15,8 @@ import {
 } from "recharts";
 
 import { graphData } from "../data/graph";
+import CashflowFinancialWidget from "./CashflowFinancialWidget";
+import { CashflowType } from "../types/financial";
 
 const CashFlow: React.FC = () => {
   const [value, setValue] = useState<number>(0);
@@ -41,6 +44,7 @@ const CashFlow: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         padding: 4,
+        height: "100%",
       }}
     >
       <Box display="flex" flexDirection="row" justifyContent={"space-between"}>
@@ -90,30 +94,57 @@ const CashFlow: React.FC = () => {
           </Button>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          direction: "row",
-          marginTop: 4,
-          height: "300px",
-        }}
-      >
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={graphData}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+
+      <Grid container sx={{ direction: "row", width: "100%", marginTop: 2 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 9 }}>
+          <Box
+            sx={{
+              display: "flex",
+              direction: "row",
+              marginTop: 4,
+              height: "300px",
+            }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <DefaultTooltipContent />
-            <Legend />
-            <ReferenceLine y={0} stroke="#000" />
-            <Bar dataKey="income" fill="#025864" />
-            <Bar dataKey="expense" fill="#0fd47e" />
-          </BarChart>
-        </ResponsiveContainer>
-      </Box>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={graphData}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <DefaultTooltipContent />
+                <Legend />
+                <ReferenceLine y={0} stroke="#000" />
+                <Bar dataKey="income" fill="#025864" />
+                <Bar dataKey="expense" fill="#0fd47e" />
+              </BarChart>
+            </ResponsiveContainer>
+          </Box>
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 12, md: 3 }}>
+          <Box
+            sx={{
+              display: "flex",
+              direction: "column",
+              flexDirection: "column",
+            }}
+          >
+            <CashflowFinancialWidget
+              value={126585}
+              change={12.36}
+              cashFlowType={CashflowType.Income}
+            />
+            <Divider />
+            <CashflowFinancialWidget
+              value={126585}
+              change={12.36}
+              cashFlowType={CashflowType.Expense}
+            />
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
