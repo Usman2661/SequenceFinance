@@ -1,74 +1,118 @@
-import { Add, ArrowUpward, Autorenew } from "@mui/icons-material";
+import { ImportExport, Settings } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  DefaultTooltipContent,
+  Legend,
+  ReferenceLine,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+import { graphData } from "../data/graph";
 
 const CashFlow: React.FC = () => {
+  const [value, setValue] = useState<number>(0);
+
+  const handleButtonClick = (newValue: number): void => {
+    setValue(newValue);
+  };
+
+  const activeStyle = {
+    backgroundColor: "#f1f1f1",
+    color: "#000",
+  };
+
+  const nonActiveStyle = {
+    backgroundColor: "white", // Non-active color
+    color: "#000",
+  };
+
   return (
     <Box
       sx={{
+        border: "1px solid #ecf0f1",
         borderRadius: 3,
-        backgroundColor: "#025864",
         justifyContent: "space-between",
         display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: "column",
         padding: 4,
       }}
     >
-      <Box>
-        <Typography color="white">Total Balance</Typography>
-        <Box
-          sx={{
-            flexDirection: "row",
-            display: "flex",
-          }}
-        >
-          <Typography variant="h3" color="white">
-            € 2151,526
-          </Typography>
-          <Typography
-            color="#0fd47e"
+      <Box display="flex" flexDirection="row" justifyContent={"space-between"}>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <ImportExport color="success" />
+          <Typography>Cashflow</Typography>
+        </Box>
+
+        <Box display="flex" flexDirection="row" gap={1}>
+          <Box>
+            <Button
+              sx={{
+                ...(value === 0 ? activeStyle : nonActiveStyle),
+                borderRadius: 2,
+                boxShadow: 0,
+                border: "1px solid #ecf0f1",
+              }}
+              onClick={() => handleButtonClick(0)}
+            >
+              Weekly
+            </Button>
+            <Button
+              sx={{
+                ...(value === 1 ? activeStyle : nonActiveStyle),
+                borderRadius: 2,
+                boxShadow: 0,
+                border: "1px solid #ecf0f1",
+              }}
+              onClick={() => handleButtonClick(1)}
+            >
+              Daily
+            </Button>
+          </Box>
+
+          <Button
+            variant="contained"
+            color="inherit"
             sx={{
-              fontSize: "1rem",
-              marginLeft: 1,
+              borderRadius: 2,
+              boxShadow: 0,
+              border: "1px solid #ecf0f1",
             }}
+            startIcon={<Settings />}
+            size="small"
           >
-            +15.87%
-          </Typography>
+            Manage
+          </Button>
         </Box>
       </Box>
-
-      <Box sx={{ display: "flex", gap: 2 }}>
-        <Button
-          variant="contained"
-          sx={{ borderRadius: 2, backgroundColor: "#0fd47e" }}
-          startIcon={<Add />}
-          size="large"
-        >
-          Add
-        </Button>
-        <Button
-          variant="contained"
-          sx={{ borderRadius: 2, backgroundColor: "#2a737d" }}
-          startIcon={<ArrowUpward />}
-          size="large"
-        >
-          Send
-        </Button>
-        <Button
-          variant="contained"
-          startIcon={<Autorenew />}
-          sx={{ borderRadius: 2, backgroundColor: "#2a737d" }}
-          size="large"
-        >
-          Request
-        </Button>
-        <Button
-          variant="contained"
-          sx={{ borderRadius: 2, backgroundColor: "#2a737d" }}
-          size="large"
-        >
-          ...
-        </Button>
+      <Box
+        sx={{
+          display: "flex",
+          direction: "row",
+          marginTop: 4,
+          height: "300px",
+        }}
+      >
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={graphData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <DefaultTooltipContent />
+            <Legend />
+            <ReferenceLine y={0} stroke="#000" />
+            <Bar dataKey="income" fill="#025864" />
+            <Bar dataKey="expense" fill="#0fd47e" />
+          </BarChart>
+        </ResponsiveContainer>
       </Box>
     </Box>
   );
