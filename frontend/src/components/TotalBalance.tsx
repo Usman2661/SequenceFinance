@@ -7,9 +7,15 @@ const TotalBalance: React.FC = () => {
       sx={{
         borderRadius: 3,
         backgroundColor: "#025864",
-        justifyContent: "space-between",
+        justifyContent: {
+          xs: "center", // Default for extra-small screens and up
+          md: "space-between", // Changes to "center" on the `md` breakpoint and larger
+        },
         display: "flex",
-        flexDirection: "row",
+        flexDirection: {
+          xs: "column",
+          md: "row",
+        },
         alignItems: "center",
         padding: 4,
       }}
@@ -37,7 +43,16 @@ const TotalBalance: React.FC = () => {
         </Box>
       </Box>
 
-      <Box sx={{ display: "flex", gap: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+        }}
+      >
         <Button
           variant="contained"
           sx={{ borderRadius: 2, backgroundColor: "#0fd47e" }}
