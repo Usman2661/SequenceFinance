@@ -1,4 +1,4 @@
-Total Time = 10 hours
+Total Time = 12 hours
 
 - 23rd December 2024 (Monday) = 1 hour
 - 24th December 2024 (Tuesday) = 1 hour
@@ -12,3 +12,4 @@ Total Time = 10 hours
 - 14th Jan 2025 (Tuesday) = 1 hour
 - 16th Jan 2025 (Thursday) = 1 hour
 - 16th Jan 2025 (Friday ) = 40 mins
+- 18th Jan 2025 (Saturday) = 2 hours
