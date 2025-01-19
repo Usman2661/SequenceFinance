@@ -43,7 +43,7 @@ const CashFlow: React.FC = () => {
         justifyContent: "space-between",
         display: "flex",
         flexDirection: "column",
-        padding: 4,
+        padding: 2,
         height: "100%",
       }}
     >
@@ -96,13 +96,13 @@ const CashFlow: React.FC = () => {
       </Box>
 
       <Grid container sx={{ direction: "row", width: "100%", marginTop: 2 }}>
-        <Grid size={{ xs: 12, sm: 12, md: 9 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 8 }}>
           <Box
             sx={{
               display: "flex",
               direction: "row",
               marginTop: 4,
-              height: "300px",
+              height: "250px",
             }}
           >
             <ResponsiveContainer width="100%" height="100%">
@@ -123,7 +123,7 @@ const CashFlow: React.FC = () => {
           </Box>
         </Grid>
 
-        <Grid size={{ xs: 12, sm: 12, md: 3 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 4 }}>
           <Box
             sx={{
               display: "flex",
@@ -132,14 +132,14 @@ const CashFlow: React.FC = () => {
             }}
           >
             <CashflowFinancialWidget
-              value={126585}
+              value={16985}
               change={12.36}
               cashFlowType={CashflowType.Income}
             />
             <Divider />
             <CashflowFinancialWidget
               value={126585}
-              change={12.36}
+              change={45.38}
               cashFlowType={CashflowType.Expense}
             />
           </Box>

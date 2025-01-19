@@ -56,19 +56,29 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
         padding: 4,
       }}
     >
-      <Box display="flex" flexDirection="row" justifyContent={"space-between"}>
-        <Box display={"flex"} flexDirection="row" height={70}>
+      <Box display="flex" flexDirection="row" alignContent={"center"}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            height: 70,
+            marginTop: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {returnIcon(cashFlowType)}
         </Box>
         <Box
           sx={{
+            marginLeft: 4,
             display: "flex",
             flexDirection: "column",
             direction: "column",
           }}
         >
           <Typography variant="h6">{cashFlowType}</Typography>
-          <div>
+          <Box sx={{ display: "flex", direction: "row" }}>
             <Typography variant="h3">${value}</Typography>
             <Typography
               color="#0fd47e"
@@ -80,7 +90,7 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
             >
               +{change}↗
             </Typography>
-          </div>
+          </Box>
         </Box>
       </Box>
     </Box>
