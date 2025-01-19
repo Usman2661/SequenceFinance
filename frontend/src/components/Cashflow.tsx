@@ -122,8 +122,9 @@ const CashFlow: React.FC = () => {
             </ResponsiveContainer>
           </Box>
         </Grid>
+        <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
 
-        <Grid size={{ xs: 12, sm: 12, md: 4 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 3 }}>
           <Box
             sx={{
               display: "flex",
