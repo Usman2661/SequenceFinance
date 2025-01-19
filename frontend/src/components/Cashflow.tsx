@@ -100,9 +100,9 @@ const CashFlow: React.FC = () => {
           <Box
             sx={{
               display: "flex",
-              direction: "row",
+              direction: "column",
               marginTop: 4,
-              height: "250px",
+              height: "280px",
             }}
           >
             <ResponsiveContainer width="100%" height="100%">

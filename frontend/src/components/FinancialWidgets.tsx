@@ -8,7 +8,7 @@ const FinancialWidgets: React.FC = () => {
     <Box>
       <Grid
         container
-        sx={{ direction: "row", width: "100%", marginTop: 2 }}
+        sx={{ direction: "row", width: "100%", marginTop: 1 }}
         spacing={2}
       >
         <Grid size={{ xs: 12, sm: 12, md: 4 }}>
