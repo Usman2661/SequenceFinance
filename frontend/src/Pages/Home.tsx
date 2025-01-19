@@ -4,6 +4,8 @@ import Grid from "@mui/material/Grid2";
 import TotalBalance from "../components/TotalBalance";
 import FinancialWidgets from "../components/FinancialWidgets";
 import CashFlow from "../components/Cashflow";
+import RecentActivity from "../components/RecentActivity";
+import MyCards from "../components/Cards";
 
 const Home: React.FC = () => {
   return (
@@ -21,6 +23,12 @@ const Home: React.FC = () => {
         </Grid>
         <Grid size={{ xs: 12, sm: 12 }}>
           <FinancialWidgets />
+        </Grid>
+        <Grid size={{ xs: 9, sm: 8 }}>
+          <RecentActivity cards={[]} />
+        </Grid>
+        <Grid size={{ xs: 3, sm: 4 }}>
+          <MyCards cards={[]} />
         </Grid>
       </Grid>
     </div>
