@@ -29,10 +29,29 @@ const MyCards: React.FC<MyCardsProps> = ({ cards }) => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Box
           sx={{
             marginTop: 1,
+            width: "90%",
+            backgroundColor: "#0fd47e",
+            borderRadius: 3,
+            justifyContent: "space-between",
+            display: "flex",
+            flexDirection: "column",
+            padding: 4,
+          }}
+        />
+        <Box
+          sx={{
+            marginTop: -3,
             width: "100%",
             backgroundColor: "#025864",
             borderRadius: 3,
