@@ -39,7 +39,7 @@ const MyCards: React.FC<MyCardsProps> = ({ cards }) => {
       >
         <Box
           sx={{
-            marginTop: 1,
+            marginTop: 4,
             width: "90%",
             backgroundColor: "#0fd47e",
             borderRadius: 3,

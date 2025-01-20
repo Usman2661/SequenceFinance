@@ -24,10 +24,10 @@ const Home: React.FC = () => {
         <Grid size={{ xs: 12, sm: 12 }}>
           <FinancialWidgets />
         </Grid>
-        <Grid size={{ xs: 9, sm: 8 }}>
+        <Grid size={{ xs: 12, sm: 7, lg: 8 }}>
           <RecentActivity cards={[]} />
         </Grid>
-        <Grid size={{ xs: 3, sm: 4 }}>
+        <Grid size={{ xs: 12, sm: 5, lg: 4 }}>
           <MyCards cards={[]} />
         </Grid>
       </Grid>
