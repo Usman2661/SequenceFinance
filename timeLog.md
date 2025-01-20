@@ -14,3 +14,4 @@ Total Time = 12 hours
 - 16th Jan 2025 (Friday ) = 40 mins
 - 18th Jan 2025 (Saturday) = 2 hours
 - 19th Jan 2025 (Sunday) = 1 hours
+- 20th Jan 2025 (Monday) = 1 hours
