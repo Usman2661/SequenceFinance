@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Chip,
   Divider,
   Table,
   TableBody,
@@ -83,7 +84,7 @@ const rows = [
     { recipient: "Noah", date: "2025-01-14", type: "sent" },
     { transactionAmount: 50, balance: 39754 },
     "failed",
-    { method: "Bank Transfer", cardLast4: "" }
+    { method: "Bank Transfer", cardLast4: "2551" }
   ),
   createData(
     { recipient: "Olivia", date: "2025-01-13", type: "add" },
@@ -138,14 +139,17 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: 900, fontSize: 15 }}>Type</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 900, fontSize: 15 }}>
+              <TableCell sx={{ fontWeight: 500, fontSize: 15 }}>Type</TableCell>
+              <TableCell
+                align="right"
+                sx={{ fontWeight: 900500, fontSize: 15 }}
+              >
                 AMOUNT
               </TableCell>
-              <TableCell align="right" sx={{ fontWeight: 900, fontSize: 15 }}>
+              <TableCell align="right" sx={{ fontWeight: 500, fontSize: 15 }}>
                 STATUS
               </TableCell>
-              <TableCell align="right" sx={{ fontWeight: 900, fontSize: 15 }}>
+              <TableCell align="right" sx={{ fontWeight: 500, fontSize: 15 }}>
                 METHOD
               </TableCell>
             </TableRow>
@@ -160,10 +164,51 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                   {row.type.type}
                 </TableCell>
                 <TableCell align="right">
-                  {row.amount.transactionAmount}
+                  <Box
+                    sx={{
+                      padding: 0,
+                      alignContent: "start",
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: 550 }}>
+                      £ {row.amount.balance}
+                    </Typography>
+                    <Typography variant="body2">
+                      {row.amount.transactionAmount} USD
+                    </Typography>
+                  </Box>
                 </TableCell>
-                <TableCell align="right">{row.status}</TableCell>
-                <TableCell align="right">{row.method.method}</TableCell>
+                <TableCell align="right">
+                  <Chip
+                    sx={{
+                      padding: 1,
+                      borderRadius: 2,
+                      fontSize: 14,
+                    }}
+                    label={row.status}
+                    color={
+                      row.status === "failed"
+                        ? "error"
+                        : row.status === "pending"
+                        ? "inherit"
+                        : "success"
+                    }
+                  />
+                </TableCell>
+                <TableCell align="right">
+                  <Box
+                    sx={{
+                      padding: 0,
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: 550 }}>
+                      {row.method.method}
+                    </Typography>
+                    <Typography variant="body2">
+                      **** {row.method.cardLast4}
+                    </Typography>
+                  </Box>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
