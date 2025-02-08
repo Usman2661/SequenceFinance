@@ -3,7 +3,6 @@ import {
   Button,
   Chip,
   Divider,
-  Icon,
   Table,
   TableBody,
   TableCell,
@@ -29,7 +28,7 @@ function createData(
   type: {
     recipient: string;
     date: string;
-    type: "add" | "sent";
+    type: "Add" | "Sent";
   },
   amount: {
     transactionAmount: number;
@@ -46,55 +45,55 @@ function createData(
 
 const rows = [
   createData(
-    { recipient: "Usman", date: "2025-01-21", type: "sent" },
+    { recipient: "Usman", date: "2025-01-21", type: "Sent" },
     { transactionAmount: 100, balance: 39654 },
     "success",
     { method: "Credit Card", cardLast4: "2563" }
   ),
   createData(
-    { recipient: "Aisha", date: "2025-01-20", type: "add" },
+    { recipient: "Aisha", date: "2025-01-20", type: "Add" },
     { transactionAmount: 500, balance: 40154 },
     "pending",
     { method: "Bank Transfer", cardLast4: "" }
   ),
   createData(
-    { recipient: "John", date: "2025-01-19", type: "sent" },
+    { recipient: "John", date: "2025-01-19", type: "Add" },
     { transactionAmount: 300, balance: 39854 },
     "failed",
     { method: "Debit Card", cardLast4: "8723" }
   ),
   createData(
-    { recipient: "Emily", date: "2025-01-18", type: "sent" },
+    { recipient: "Emily", date: "2025-01-18", type: "Sent" },
     { transactionAmount: 200, balance: 40254 },
     "success",
     { method: "Credit Card", cardLast4: "9845" }
   ),
   createData(
-    { recipient: "Michael", date: "2025-01-17", type: "add" },
+    { recipient: "Michael", date: "2025-01-17", type: "Add" },
     { transactionAmount: 750, balance: 41004 },
     "success",
     { method: "Bank Transfer", cardLast4: "" }
   ),
   createData(
-    { recipient: "Sophia", date: "2025-01-16", type: "sent" },
+    { recipient: "Sophia", date: "2025-01-16", type: "Sent" },
     { transactionAmount: 150, balance: 39804 },
     "pending",
     { method: "Debit Card", cardLast4: "4501" }
   ),
   createData(
-    { recipient: "Ali", date: "2025-01-15", type: "add" },
+    { recipient: "Ali", date: "2025-01-15", type: "Add" },
     { transactionAmount: 1200, balance: 41204 },
     "success",
     { method: "Credit Card", cardLast4: "1234" }
   ),
   createData(
-    { recipient: "Noah", date: "2025-01-14", type: "sent" },
+    { recipient: "Noah", date: "2025-01-14", type: "Sent" },
     { transactionAmount: 50, balance: 39754 },
     "failed",
     { method: "Bank Transfer", cardLast4: "2551" }
   ),
   createData(
-    { recipient: "Olivia", date: "2025-01-13", type: "add" },
+    { recipient: "Olivia", date: "2025-01-13", type: "Add" },
     { transactionAmount: 300, balance: 40054 },
     "success",
     { method: "Debit Card", cardLast4: "5678" }
@@ -175,22 +174,24 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                       direction: "row",
                     }}
                   >
-                    {/* <Box
+                    <Box
                       sx={{
                         spacing: 1,
                         backgroundColor: "#e5fbf1",
-                        borderRadius: 9,
+                        height: 60,
+                        width: 60,
+                        display: "flex",
+                        borderRadius: "50%",
                         alignItems: "center",
                         justifyContent: "center",
                       }}
-                    > */}
-                    {row.type.type === "sent" ? (
-                      <Icon>add_circle</Icon>
-                    ) : (
-                      // <Add sx={{ fontSize: 50, color: "#0a975d" }} />
-                      <ArrowUpward sx={{ fontSize: 50, color: "#0a975d" }} />
-                    )}
-                    {/* </Box> */}
+                    >
+                      {row.type.type === "Sent" ? (
+                        <Add sx={{ fontSize: 50, color: "#0a975d" }} />
+                      ) : (
+                        <ArrowUpward sx={{ fontSize: 50, color: "#0a975d" }} />
+                      )}
+                    </Box>
 
                     <Box
                       sx={{ display: "flex", flexDirection: "column", gap: 1 }}
@@ -199,7 +200,11 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                         {row.type.recipient}
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        {row.type.type} - {row.type.date}
+                        {row.type.type} -{" "}
+                        {`${new Date(row.type.date).getDay()} 
+                          ${new Date(row.type.date).toLocaleString("default", {
+                            month: "short",
+                          })} ${new Date(row.type.date).getFullYear()}`}
                       </Typography>
                     </Box>
                   </Box>
@@ -225,17 +230,22 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                   <Chip
                     sx={{
                       padding: 1,
-                      borderRadius: 2,
-                      fontSize: 14,
+                      borderRadius: 4,
+                      fontSize: 15,
+                      backgroundColor:
+                        row.status === "failed"
+                          ? "#f1948a"
+                          : row.status === "pending"
+                          ? "primary"
+                          : "#e5fbf1",
+                      color:
+                        row.status === "failed"
+                          ? "#943126"
+                          : row.status === "pending"
+                          ? "grey"
+                          : "#0a975d",
                     }}
                     label={row.status}
-                    color={
-                      row.status === "failed"
-                        ? "error"
-                        : row.status === "pending"
-                        ? "inherit"
-                        : "success"
-                    }
                   />
                 </TableCell>
                 <TableCell align="right">
