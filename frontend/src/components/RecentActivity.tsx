@@ -3,6 +3,7 @@ import {
   Button,
   Chip,
   Divider,
+  Icon,
   Table,
   TableBody,
   TableCell,
@@ -12,7 +13,13 @@ import {
   Typography,
 } from "@mui/material";
 
-import { FilterList, StackedLineChart, SwapVert } from "@mui/icons-material";
+import {
+  Add,
+  ArrowUpward,
+  FilterList,
+  StackedLineChart,
+  SwapVert,
+} from "@mui/icons-material";
 
 interface RecentActivityProps {
   cards: unknown[];
@@ -161,19 +168,55 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.type.type}
+                  <Box
+                    sx={{
+                      gap: 3,
+                      display: "flex",
+                      direction: "row",
+                    }}
+                  >
+                    {/* <Box
+                      sx={{
+                        spacing: 1,
+                        backgroundColor: "#e5fbf1",
+                        borderRadius: 9,
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    > */}
+                    {row.type.type === "sent" ? (
+                      <Icon>add_circle</Icon>
+                    ) : (
+                      // <Add sx={{ fontSize: 50, color: "#0a975d" }} />
+                      <ArrowUpward sx={{ fontSize: 50, color: "#0a975d" }} />
+                    )}
+                    {/* </Box> */}
+
+                    <Box
+                      sx={{ display: "flex", flexDirection: "column", gap: 1 }}
+                    >
+                      <Typography sx={{ fontSize: 18, fontWeight: 500 }}>
+                        {row.type.recipient}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {row.type.type} - {row.type.date}
+                      </Typography>
+                    </Box>
+                  </Box>
                 </TableCell>
                 <TableCell align="right">
                   <Box
                     sx={{
-                      padding: 0,
-                      alignContent: "start",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "flex-end",
                     }}
                   >
-                    <Typography sx={{ fontWeight: 550 }}>
+                    <Typography sx={{ fontSize: 18, fontWeight: 500 }}>
                       £ {row.amount.balance}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" color="textSecondary">
                       {row.amount.transactionAmount} USD
                     </Typography>
                   </Box>
@@ -199,12 +242,15 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                   <Box
                     sx={{
                       padding: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
                     }}
                   >
-                    <Typography sx={{ fontWeight: 550 }}>
+                    <Typography sx={{ fontSize: 18, fontWeight: 500 }}>
                       {row.method.method}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" color="textSecondary">
                       **** {row.method.cardLast4}
                     </Typography>
                   </Box>
