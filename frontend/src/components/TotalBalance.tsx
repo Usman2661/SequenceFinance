@@ -1,14 +1,16 @@
 import { Add, ArrowUpward, Autorenew } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 import { Box, Button, Typography } from "@mui/material";
 
 const TotalBalance: React.FC = () => {
+  const theme: any = useTheme();
   return (
     <Box
       sx={{
         borderRadius: 3,
-        backgroundColor: "#025864",
+        backgroundColor: theme.customColors.transaction.transactionPrimary,
         justifyContent: {
-          xs: "center", // Default for extra-small screens and up
+          xs: "center",
           md: "space-between", // Changes to "center" on the `md` breakpoint and larger
         },
         display: "flex",
