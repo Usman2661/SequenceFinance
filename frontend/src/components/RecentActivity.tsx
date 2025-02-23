@@ -178,8 +178,8 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                       sx={{
                         spacing: 1,
                         backgroundColor: "#e5fbf1",
-                        height: 60,
-                        width: 60,
+                        height: { lg: 60, md: 40, sm: 30, xs: 30 },
+                        width: { lg: 60, md: 40, sm: 30, xs: 30 },
                         display: "flex",
                         borderRadius: "50%",
                         alignItems: "center",
@@ -187,9 +187,14 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                       }}
                     >
                       {row.type.type === "Sent" ? (
-                        <Add sx={{ fontSize: 50, color: "#0a975d" }} />
+                        <Add
+                          sx={{
+                            fontSize: 30,
+                            color: "#0a975d",
+                          }}
+                        />
                       ) : (
-                        <ArrowUpward sx={{ fontSize: 50, color: "#0a975d" }} />
+                        <ArrowUpward sx={{ fontSize: 30, color: "#0a975d" }} />
                       )}
                     </Box>
 
@@ -230,8 +235,9 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ cards }) => {
                   <Chip
                     sx={{
                       padding: 1,
-                      borderRadius: 4,
+                      borderRadius: 2,
                       fontSize: 15,
+                      width: 100,
                       backgroundColor:
                         row.status === "failed"
                           ? "#f1948a"
