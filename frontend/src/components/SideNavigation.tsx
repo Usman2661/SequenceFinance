@@ -7,12 +7,14 @@ import {
   Drawer,
   IconButton,
   Typography,
+  useTheme,
 } from "@mui/material";
 
 import { KeyboardTab, GroupWork } from "@mui/icons-material";
 import NavbarListItems from "./ListItems";
 import { deepPurple } from "@mui/material/colors";
 import { getActiveColor } from "../utils/navbar";
+import { SequenceTheme } from "../types/theme";
 
 const drawerWidthExpanded = 240;
 const drawerWidthCollapsed = 60; // Smaller width when collapsed
@@ -33,6 +35,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const [activeNavbarItem, setActiveNavbarItem] = useState("Dashboard");
   const [collapsed, setCollapsed] = useState(false); // Added state to track collapse
   const drawerWidth = collapsed ? drawerWidthCollapsed : drawerWidthExpanded;
+
+  const theme: SequenceTheme = useTheme();
 
   console.log(isClosing);
   const handleDrawerClose = () => {
@@ -64,7 +68,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       >
         <GroupWork
           sx={{
-            color: getActiveColor(darkMode, "#025864", "white"),
+            color: getActiveColor(
+              darkMode,
+              theme.customColors.transaction.transactionPrimary,
+              "white"
+            ),
             marginRight: 1,
             fontSize: "2rem",
           }}
@@ -73,7 +81,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           <Typography
             variant="h5"
             sx={{
-              color: getActiveColor(darkMode, "#025864", "white"),
+              color: getActiveColor(
+                darkMode,
+                theme.customColors.transaction.transactionPrimary,
+                "white"
+              ),
               fontWeight: 500,
             }}
           >

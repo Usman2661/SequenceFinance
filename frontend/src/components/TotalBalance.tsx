@@ -1,9 +1,10 @@
 import { Add, ArrowUpward, Autorenew } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { Box, Button, Typography } from "@mui/material";
+import { SequenceTheme } from "../types/theme";
 
 const TotalBalance: React.FC = () => {
-  const theme: any = useTheme();
+  const theme: SequenceTheme = useTheme();
   return (
     <Box
       sx={{
@@ -11,7 +12,7 @@ const TotalBalance: React.FC = () => {
         backgroundColor: theme.customColors.transaction.transactionPrimary,
         justifyContent: {
           xs: "center",
-          md: "space-between", // Changes to "center" on the `md` breakpoint and larger
+          md: "space-between",
         },
         display: "flex",
         flexDirection: {

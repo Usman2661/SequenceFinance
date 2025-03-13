@@ -1,11 +1,13 @@
 import { Contactless, CreditCard } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import { SequenceTheme } from "../types/theme";
 
 interface MyCardsProps {
   cards: unknown[];
 }
 
 const MyCards: React.FC<MyCardsProps> = ({ cards }) => {
+  const theme: SequenceTheme = useTheme();
   console.log(cards);
   return (
     <Box
@@ -53,7 +55,7 @@ const MyCards: React.FC<MyCardsProps> = ({ cards }) => {
           sx={{
             marginTop: -3,
             width: "100%",
-            backgroundColor: "#025864",
+            backgroundColor: theme.customColors.transaction.transactionPrimary,
             borderRadius: 3,
             justifyContent: "space-between",
             display: "flex",

@@ -12,12 +12,14 @@ import {
   Diamond,
   DarkMode,
 } from "@mui/icons-material";
+import { SequenceTheme } from "../types/theme";
 
 // Using an object to map the text to icons for cleaner code
 export const returnIcon = (
   text: string,
   activeItem: string,
-  darkMode: boolean
+  darkMode: boolean,
+  theme: SequenceTheme
 ) => {
   const iconMap: { [key: string]: JSX.Element } = {
     Dashboard: (
@@ -25,7 +27,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -35,7 +41,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -45,7 +55,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -55,7 +69,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -65,7 +83,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -75,7 +97,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -85,7 +111,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -95,7 +125,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -105,7 +139,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -115,7 +153,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -125,7 +167,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />
@@ -135,7 +181,11 @@ export const returnIcon = (
         sx={{
           color:
             text === activeItem
-              ? getActiveColor(darkMode, "#025864", "white")
+              ? getActiveColor(
+                  darkMode,
+                  theme.customColors.transaction.transactionPrimary,
+                  "white"
+                )
               : getActiveColor(darkMode, "black", "white"),
         }}
       />

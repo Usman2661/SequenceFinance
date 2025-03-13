@@ -1,5 +1,5 @@
 import { ImportExport, Settings } from "@mui/icons-material";
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState } from "react";
 import {
@@ -17,8 +17,11 @@ import {
 import { graphData } from "../data/graph";
 import CashflowFinancialWidget from "./CashflowFinancialWidget";
 import { CashflowType } from "../types/financial";
+import { SequenceTheme } from "../types/theme";
 
 const CashFlow: React.FC = () => {
+  const theme: SequenceTheme = useTheme();
+
   const [value, setValue] = useState<number>(0);
 
   const handleButtonClick = (newValue: number): void => {
@@ -116,7 +119,10 @@ const CashFlow: React.FC = () => {
                 <DefaultTooltipContent />
                 <Legend />
                 <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="income" fill="#025864" />
+                <Bar
+                  dataKey="income"
+                  fill={theme.customColors.transaction.transactionPrimary}
+                />
                 <Bar dataKey="expense" fill="#0fd47e" />
               </BarChart>
             </ResponsiveContainer>

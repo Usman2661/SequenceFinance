@@ -1,10 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  createTheme,
-  ThemeProvider,
-  CssBaseline,
-  ThemeOptions,
-} from "@mui/material";
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
@@ -12,6 +7,7 @@ import Home from "./Pages/Home";
 import LayoutWithSideNavigation from "./components/LayoutWithSideNavigation";
 import { useState } from "react";
 import { appColors } from "./constants/appColors";
+import { SequenceTheme } from "./types/theme";
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,7 +24,7 @@ const App: React.FC = () => {
       },
     },
     customColors: appColors,
-  } as ThemeOptions);
+  } as SequenceTheme);
 
   const darkTheme = createTheme({
     palette: {
@@ -46,7 +42,7 @@ const App: React.FC = () => {
       },
     },
     customColors: appColors,
-  } as ThemeOptions);
+  } as SequenceTheme);
 
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;

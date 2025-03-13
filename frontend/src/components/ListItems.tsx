@@ -7,9 +7,11 @@ import {
   Typography,
   Box,
   Tooltip,
+  useTheme,
 } from "@mui/material";
 import { getActiveColor, returnIcon } from "../utils/navbar";
 import { IOSSwitch } from "../utils/switch";
+import { SequenceTheme } from "../types/theme";
 
 interface NavbarListItemProps {
   activeNavbarItem: string;
@@ -28,6 +30,8 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
   toggleDarkMode,
   collapsed,
 }) => {
+  const theme: SequenceTheme = useTheme();
+
   const handleActiveNavbarItemClick = (text: string) => {
     setActiveNavbarItem(text);
     if (text === "Dark Mode" && collapsed) {
@@ -54,7 +58,7 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
           >
             <ListItemButton onClick={() => handleActiveNavbarItemClick(text)}>
               <ListItemIcon sx={{ minWidth: 0, marginRight: 1 }}>
-                {returnIcon(text, activeNavbarItem, darkMode)}
+                {returnIcon(text, activeNavbarItem, darkMode, theme)}
               </ListItemIcon>
               {!collapsed && (
                 <ListItemText
@@ -68,7 +72,8 @@ const NavbarListItems: React.FC<NavbarListItemProps> = ({
                           text === activeNavbarItem
                             ? darkMode
                               ? "white"
-                              : "#025864"
+                              : theme.customColors.transaction
+                                  .transactionPrimary
                             : darkMode
                             ? "white"
                             : "black",

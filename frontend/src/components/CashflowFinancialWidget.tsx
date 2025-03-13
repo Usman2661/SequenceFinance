@@ -1,7 +1,8 @@
 import { ArrowOutward, CallReceived } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import { CashflowType } from "../types/financial";
+import { SequenceTheme } from "../types/theme";
 
 interface CashflowWidgetProps {
   value: number;
@@ -14,6 +15,8 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
   cashFlowType,
   change,
 }) => {
+  const theme: SequenceTheme = useTheme();
+
   const returnIcon = (cashflowType: CashflowType) => {
     switch (cashflowType) {
       case CashflowType.Expense:
@@ -36,7 +39,8 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
               display: "flex",
               padding: 3,
               borderRadius: 2,
-              backgroundColor: "#025864",
+              backgroundColor:
+                theme.customColors.transaction.transactionPrimary,
             }}
           >
             <CallReceived sx={{ fontSize: 25, color: "white" }} />
