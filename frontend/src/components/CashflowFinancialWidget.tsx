@@ -26,7 +26,8 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
               display: "flex",
               padding: 3,
               borderRadius: 2,
-              backgroundColor: "#0fd47e",
+              backgroundColor:
+                theme.customColors.transaction.transactionSecondary,
             }}
           >
             <ArrowOutward sx={{ fontSize: 25, color: "white" }} />
@@ -85,7 +86,7 @@ const CashflowFinancialWidget: React.FC<CashflowWidgetProps> = ({
           <Box sx={{ display: "flex", direction: "row" }}>
             <Typography variant="h3">${value}</Typography>
             <Typography
-              color="#0fd47e"
+              color={theme.customColors.transaction.transactionSecondary}
               sx={{
                 fontSize: "1rem",
                 marginTop: 3,

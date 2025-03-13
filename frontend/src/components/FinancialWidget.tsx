@@ -1,6 +1,7 @@
 import { AccountBalance, Event, Savings } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { AccountType } from "../types/financial";
+import { SequenceTheme } from "../types/theme";
 
 interface FinancialWidgetProps {
   balance: number;
@@ -17,6 +18,7 @@ const FinancialWidget: React.FC<FinancialWidgetProps> = ({
   period,
   previousBalance,
 }) => {
+  const theme: SequenceTheme = useTheme();
   const returnIcon = (accountType: AccountType) => {
     switch (accountType) {
       case AccountType.BusinessAccount:
@@ -55,7 +57,7 @@ const FinancialWidget: React.FC<FinancialWidgetProps> = ({
       <Box display="flex" flexDirection="row" marginTop={2}>
         <Typography variant="h3">${balance}</Typography>
         <Typography
-          color="#0fd47e"
+          color={theme.customColors.transaction.transactionSecondary}
           sx={{
             fontSize: "1rem",
             marginTop: 3,

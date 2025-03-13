@@ -35,7 +35,7 @@ const TotalBalance: React.FC = () => {
             € 2151,526
           </Typography>
           <Typography
-            color="#0fd47e"
+            color={theme.customColors.transaction.transactionSecondary}
             sx={{
               fontSize: "1rem",
               marginLeft: 1,
@@ -58,7 +58,11 @@ const TotalBalance: React.FC = () => {
       >
         <Button
           variant="contained"
-          sx={{ borderRadius: 2, backgroundColor: "#0fd47e" }}
+          sx={{
+            borderRadius: 2,
+            backgroundColor:
+              theme.customColors.transaction.transactionSecondary,
+          }}
           startIcon={<Add />}
           size="large"
         >

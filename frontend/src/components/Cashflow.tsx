@@ -123,7 +123,10 @@ const CashFlow: React.FC = () => {
                   dataKey="income"
                   fill={theme.customColors.transaction.transactionPrimary}
                 />
-                <Bar dataKey="expense" fill="#0fd47e" />
+                <Bar
+                  dataKey="expense"
+                  fill={theme.customColors.transaction.transactionSecondary}
+                />
               </BarChart>
             </ResponsiveContainer>
           </Box>

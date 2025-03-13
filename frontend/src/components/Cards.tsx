@@ -43,7 +43,8 @@ const MyCards: React.FC<MyCardsProps> = ({ cards }) => {
           sx={{
             marginTop: 4,
             width: "90%",
-            backgroundColor: "#0fd47e",
+            backgroundColor:
+              theme.customColors.transaction.transactionSecondary,
             borderRadius: 3,
             justifyContent: "space-between",
             display: "flex",
