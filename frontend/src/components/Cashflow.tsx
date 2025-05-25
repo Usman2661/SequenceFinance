@@ -29,12 +29,12 @@ const CashFlow: React.FC = () => {
   };
 
   const activeStyle = {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "white",
     color: "#000",
   };
 
   const nonActiveStyle = {
-    backgroundColor: "white", // Non-active color
+    backgroundColor: "#f1f1f1",
     color: "#000",
   };
 
